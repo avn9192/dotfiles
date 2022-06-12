@@ -1,7 +1,9 @@
 ;; System
 
-(setq gc-cons-threshold 50000000)
-(setq large-file-warnings-threshold 100000000)
+;; (setq gc-cons-threshold 50000000)
+;; (setq large-file-warnings-threshold 100000000)
+
+;; (setq gc-cons-threshold most-positive-fixnum)
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -52,7 +54,8 @@
        (abbreviate-file-name (buffer-file-name))
      "%b"))))
 
-(set-frame-font "Bitstream Vera Sans Mono 14" nil t)
+(set-frame-font "Ubuntu Mono 14" nil t)
+;; (set-frame-font "Bitstream Vera Sans Mono 14" nil t)
 ;; (set-frame-font "Ubuntu Mono 16" nil t)
 ;; (set-frame-font "Terminus 14")
 
@@ -81,20 +84,30 @@
 
 (unless (package-installed-p 'yasnippet)
   (package-install 'yasnippet))
+
 (unless (package-installed-p 'yasnippet-snippets)
   (package-install 'yasnippet-snippets))
 (yas-global-mode 1)
 
+(unless (package-installed-p 'slime)
+  (package-install 'slime))
+(setq inferior-lisp-program "sbcl")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(darkburn))
+ '(ansi-term-color-vector
+   [unspecified "#FFFFFF" "#d15120" "#5f9411" "#d2ad00" "#6b82a7" "#a66bab" "#6b82a7" "#505050"])
+ '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
-   '("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "4af38f1ae483eb9335402775b02e93a69f31558f73c869af0d2403f1c72d1d33" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "76b4632612953d1a8976d983c4fdf5c3af92d216e2f87ce2b0726a1f37606158" "7575474658c34b905bcec30a725653b2138c2f2d3deef0587e3abfae08c5b276" "fc48cc3bb3c90f7761adf65858921ba3aedba1b223755b5924398c666e78af8b" default))
+   (quote
+    ("76b4632612953d1a8976d983c4fdf5c3af92d216e2f87ce2b0726a1f37606158" default)))
+ '(fci-rule-character-color "#d9d9d9")
+ '(fci-rule-color "#d9d9d9")
  '(package-selected-packages
-   '(cider clojure-mode yasnippet-snippets yasnippet dockerfile-mode company fsharp-mode bubbleberry-theme color-theme-sanityinc-tomorrow twilight-bright-theme darkburn-theme zenburn-theme use-package)))
+   (quote
+    (twilight-bright-theme slime yasnippet-snippets yasnippet company use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
