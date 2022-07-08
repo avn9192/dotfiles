@@ -1,10 +1,3 @@
-;; System
-
-;; (setq gc-cons-threshold 50000000)
-;; (setq large-file-warnings-threshold 100000000)
-
-;; (setq gc-cons-threshold most-positive-fixnum)
-
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -13,7 +6,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -35,8 +28,6 @@
 (require 'server)
 (if (not (server-running-p)) (server-start))
 
-;; Visual
-
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
@@ -54,12 +45,7 @@
        (abbreviate-file-name (buffer-file-name))
      "%b"))))
 
-(set-frame-font "Ubuntu Mono 14" nil t)
-;; (set-frame-font "Bitstream Vera Sans Mono 14" nil t)
-;; (set-frame-font "Ubuntu Mono 16" nil t)
-;; (set-frame-font "Terminus 14")
-
-;; Editor
+(set-frame-font "Ubuntu Mono 13" nil t)
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -72,12 +58,6 @@
 
 (electric-pair-mode 1)
 
-;; (unless (package-installed-p 'evil)
-;;   (package-install 'evil))
-
-;; (require 'evil)
-;; (evil-mode 1)
-
 (unless (package-installed-p 'company)
   (package-install 'company))
 (add-hook 'after-init-hook 'global-company-mode)
@@ -88,26 +68,12 @@
 (unless (package-installed-p 'yasnippet-snippets)
   (package-install 'yasnippet-snippets))
 (yas-global-mode 1)
-
-(unless (package-installed-p 'slime)
-  (package-install 'slime))
-(setq inferior-lisp-program "sbcl")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-term-color-vector
-   [unspecified "#FFFFFF" "#d15120" "#5f9411" "#d2ad00" "#6b82a7" "#a66bab" "#6b82a7" "#505050"])
- '(custom-enabled-themes (quote (wombat)))
- '(custom-safe-themes
-   (quote
-    ("76b4632612953d1a8976d983c4fdf5c3af92d216e2f87ce2b0726a1f37606158" default)))
- '(fci-rule-character-color "#d9d9d9")
- '(fci-rule-color "#d9d9d9")
- '(package-selected-packages
-   (quote
-    (twilight-bright-theme slime yasnippet-snippets yasnippet company use-package))))
+ '(package-selected-packages '(yasnippet-snippets yasnippet company use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
