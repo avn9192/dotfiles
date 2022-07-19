@@ -45,7 +45,7 @@
        (abbreviate-file-name (buffer-file-name))
      "%b"))))
 
-(set-frame-font "Ubuntu Mono 13" nil t)
+(set-frame-font "Ubuntu Mono 12" nil t)
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -65,6 +65,12 @@
 (unless (package-installed-p 'yasnippet)
   (package-install 'yasnippet))
 
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp))))
+
 (unless (package-installed-p 'yasnippet-snippets)
   (package-install 'yasnippet-snippets))
 (yas-global-mode 1)
@@ -73,7 +79,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(yasnippet-snippets yasnippet company use-package)))
+ '(custom-enabled-themes '(sanityinc-tomorrow-bright))
+ '(custom-safe-themes
+   '("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "7feeed063855b06836e0262f77f5c6d3f415159a98a9676d549bfeb6c49637c4" "5a611788d47c1deec31494eb2bb864fde402b32b139fe461312589a9f28835db" default))
+ '(ispell-dictionary nil)
+ '(package-selected-packages
+   '(color-theme-sanityinc-tomorrow lsp-pyright modus-operandi-theme modus-themes modus-vivendi-theme yasnippet-snippets yasnippet company use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
